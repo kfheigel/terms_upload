@@ -6,49 +6,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UploaderController{
-    /**
-     * @Route("/home")
-     */
-    public function homeUpload(){
-        
-        return new Response('Home!');
-
-    }
 
     /**
-     * @Route("/az")
+     * @Route("/uploader/{service}")
      */
-    public function azUpload(){
+    public function Upload($service){
 
-        return new Response('az!');
-
+        $services = array('home', 'az', 'ionosbg', 'ionoshu', 'ionosro');
+        if(in_array($service, $services)){
+            return new Response(sprintf(
+                'Active service: "%s"',
+                $service
+            ));
+        }else {
+            return new Response(sprintf(
+                'Service: "%s" is not available',
+                $service
+            ));
+        }
     }
-
-    /**
-     * @Route("/ionos_bg")
-     */
-    public function ionos_bgUpload(){
-
-        return new Response('ionos.bg');
-
-    }
-
-    /**
-     * @Route("/ionos_ro")
-     */
-    public function ionos_roUpload(){
-
-        return new Response('ionos.ro');
-
-    }
-
-    /**
-     * @Route("/ionos_hu")
-     */
-    public function ionos_huUpload(){
-
-        return new Response('ionos.hu');
-
-    }
-
 }
