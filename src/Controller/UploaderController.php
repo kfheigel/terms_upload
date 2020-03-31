@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UploaderController{
+class UploaderController extends AbstractController {
 
     /**
      * @Route("/uploader/{service}")
@@ -14,15 +15,17 @@ class UploaderController{
 
         $services = array('home', 'az', 'ionosbg', 'ionoshu', 'ionosro');
         if(in_array($service, $services)){
-            return new Response(sprintf(
-                'Active service: "%s"',
-                $service
-            ));
+
+            return $this->render('uploader/upload.html.twig',[
+                'service' => $service
+            ]);
+
         }else {
-            return new Response(sprintf(
-                'Service: "%s" is not available',
-                $service
-            ));
+            return $this->render('uploader/upload.html.twig',[
+                'service' => "Service: $service is not available",
+                    ]);
+
+
         }
     }
 }
