@@ -6,31 +6,31 @@
 
 {% block body %}
     <div class="container">
-    <div class=" d-flex flex-column justify-content-center align-items-center">
-        <h1>Welcome {{ service }}</h1>
+        <div class=" d-flex flex-column justify-content-center align-items-center">
+            <h1>Welcome to: {{ service }}!</h1>
 
-        <div class="dropdown dropright">
-            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Wybierz Serwis
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="/uploader/home">
-                    home
-                </a>
-                <a class="dropdown-item" href="/uploader/az">
-                    az
-                </a>
-                <a class="dropdown-item" href="/uploader/ionosbg">
-                    ionosbg
-                </a>
-                <a class="dropdown-item" href="/uploader/ionosro">
-                    ionosro
-                </a>
-                <a class="dropdown-item" href="/uploader/ionoshu">
-                    ionoshu
-                </a>
+            <div class="dropdown dropright">
+                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Wybierz Serwis
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/uploader/home">
+                        home
+                    </a>
+                    <a class="dropdown-item" href="/uploader/az">
+                        az
+                    </a>
+                    <a class="dropdown-item" href="/uploader/ionosbg">
+                        ionosbg
+                    </a>
+                    <a class="dropdown-item" href="/uploader/ionosro">
+                        ionosro
+                    </a>
+                    <a class="dropdown-item" href="/uploader/ionoshu">
+                        ionoshu
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
