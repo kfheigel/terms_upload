@@ -7,7 +7,7 @@
 {% block body %}
     <div class="container">
         <div class=" d-flex flex-column justify-content-center align-items-center mt-5">
-            <h1>Witaj we wrzucałce regulaminów!</h1>
+            <h1>Witaj w terms uploader!</h1>
 
             <div class="dropdown dropright mt-3">
                 <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,9 +33,9 @@
             </div>
             <form class="mt-4" method="POST" action="{{ path('upload_terms') }}" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label class ="input-upload btn-primary" for="terms">Wybierz plik</label>
+                    <label id="input-label" class ="input-upload btn-primary" for="terms">Wybierz plik</label>
 
-                    <input type="file" class="form-control-file" name="terms" id="terms">
+                    <input type="file" class="form-control-file" name="terms" id="terms" onchange="showname()">
 
                     <button type="submit" class="btn btn-primary">Wrzuć</button>
                 </div>
