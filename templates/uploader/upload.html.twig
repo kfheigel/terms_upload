@@ -7,37 +7,46 @@
 {% block body %}
     <div class="container">
         <div class=" d-flex flex-column justify-content-center align-items-center mt-5">
-            <h1>Witaj w terms uploader!</h1>
+            <h1>Reguladmin</h1>
 
-            <div class="dropdown dropright mt-3">
-                <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Wybierz Serwis
-                </button>
-                <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item">
-                        home
-                    </a>
-                    <a class="dropdown-item">
-                        az
-                    </a>
-                    <a class="dropdown-item">
-                        ionosbg
-                    </a>
-                    <a class="dropdown-item">
-                        ionosro
-                    </a>
-                    <a class="dropdown-item">
-                        ionoshu
-                    </a>
-                </div>
-            </div>
             <form class="mt-4" method="POST" action="{{ path('upload_terms') }}" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label id="input-label" class ="input-upload btn-primary" for="terms">Wybierz plik</label>
+                    <label for="dropdown-menu" class="">SERWIS</label>
+                    <div id="dropdown-menu" class="dropdown dropright">
+                        <button type="button" class="expand dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Wybierz Serwis
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item">home</a>
+                            <a class="dropdown-item">az</a>
+                            <a class="dropdown-item">ionosbg</a>
+                            <a class="dropdown-item">ionosro</a>
+                            <a class="dropdown-item">ionoshu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="date" class="">DATA</label>
+                    <input id="date" type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="file-name" class="">NAZWA REGULAMINU</label>
+                    <input id="file-name" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="file-link" class="">PODGLĄD</label>
+                    <input id="file-link" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label id="input-label" class ="btn btn-primary" for="terms">
+                        <span class="">Dodaj regulamin PDF</span>
+                    </label>
 
                     <input type="file" class="form-control-file" name="terms" id="terms" onchange="showname()">
 
-                    <button type="submit" class="btn btn-primary">Wrzuć</button>
+                    <button id="submit-button" type="submit" class="btn btn-secondary" disabled>
+                        UPLOAD
+                    </button>
                 </div>
             </form>
         </div>
