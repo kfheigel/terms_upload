@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,6 +20,10 @@ class UploaderController extends AbstractController {
      * @Route("/", name="upload_terms")
      */
     public function termUpload(Request $request){
-        dd($request->files->get('terms'));
+        /** @var UploadedFile $uploadedFile */
+        $uploadedFile = $request->files->get('terms');
+        $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+
+        $uploadedFile->move($destination);
     }
 }
