@@ -1,36 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ service }}
+    Terms Uploader
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <div class=" d-flex flex-column justify-content-center align-items-center">
-            <h1>Welcome to: {{ service }}!</h1>
+        <div class=" d-flex flex-column justify-content-center align-items-center mt-5">
+            <h1>Witaj we wrzucałce regulaminów!</h1>
 
-            <div class="dropdown dropright">
+            <div class="dropdown dropright mt-3">
                 <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Wybierz Serwis
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/uploader/home">
+                <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item">
                         home
                     </a>
-                    <a class="dropdown-item" href="/uploader/az">
+                    <a class="dropdown-item">
                         az
                     </a>
-                    <a class="dropdown-item" href="/uploader/ionosbg">
+                    <a class="dropdown-item">
                         ionosbg
                     </a>
-                    <a class="dropdown-item" href="/uploader/ionosro">
+                    <a class="dropdown-item">
                         ionosro
                     </a>
-                    <a class="dropdown-item" href="/uploader/ionoshu">
+                    <a class="dropdown-item">
                         ionoshu
                     </a>
                 </div>
             </div>
+            <form class="mt-4" method="POST" action="{{ path('upload_terms') }}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class ="input-upload btn-primary" for="terms">Wybierz plik</label>
+
+                    <input type="file" class="form-control-file" name="terms" id="terms">
+
+                    <button type="submit" class="btn btn-primary">Wrzuć</button>
+                </div>
+            </form>
         </div>
     </div>
+    <footer class="fixed-bottom mb-2">
+        <div class="container">
+            <span class="d-flex text-muted justify-content-right">Krzysztof Heigel 2020 &reg;</span>
+        </div>
+    </footer>
 {% endblock %}
