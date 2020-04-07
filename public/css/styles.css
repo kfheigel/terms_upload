@@ -1,12 +1,13 @@
-/*body{*/
-/*    background: #E5E5E5;*/
-/*}*/
-/*.label-text{*/
-/*    font-size: 11px;*/
-/*    line-height: 15px;*/
-/*    color: #222A47;*/
-/*    opacity: 0.5;*/
-/*}*/
+body{
+    background: #E5E5E5;
+}
+
+.label-text{
+    font-size: 11px;
+    line-height: 15px;
+    color: #222A47;
+    opacity: 0.5;
+}
 
 input[type="file"] {
     width: 0.1px;
@@ -16,55 +17,54 @@ input[type="file"] {
     position: absolute;
     z-index: -1;
 }
-/*.form-control{*/
-/*    background: #FFFFFF;*/
-/*    width: 694px;*/
-/*    height: 80px;*/
-/*    padding: 0px;*/
-/*    font-size: 25px;*/
-/*    line-height: 33px;*/
-/*    color: #222A47;*/
-/*}*/
+.form-control{
+    background: #FFFFFF;
+    width: 694px;
+    height: 80px;
+    padding: 0px;
+    font-size: 25px;
+    line-height: 33px;
+    color: #222A47;
+}
 
-/*.input-upload {*/
-/*    border-radius: 5px;*/
-/*    display: inline-block;*/
-/*    height: 38px;*/
-/*}*/
+.input-upload {
+    border-radius: 4px;
+    display: inline-block;
+}
 
-/*.input-upload-blue{*/
-/*    background: #B8DDF1;*/
-/*}*/
+.input-upload-blue{
+    background: #B8DDF1;
+}
 
-/*.btn{*/
-/*    border-radius: 4px;*/
-/*    width: 340px;*/
-/*    height: 80px;*/
-/*    padding: 0px;*/
-/*}*/
+.btn{
+    border-radius: 4px;
+    width: 340px;
+    height: 80px;
+    padding: 0px;
+}
 
-/*.btn-secondary{*/
-/*    background: #E3EBF0;*/
-/*    border: 0px;*/
-/*}*/
+.btn-secondary{
+    background: #E3EBF0;
+    border: 0px;
+}
 
-/*.upload-text{*/
-/*    font-size: 22px;*/
-/*    line-height: 29px;*/
-/*    color: #000000;*/
-/*    opacity: 0.2;*/
-/*}*/
-/*.terms-text{*/
-/*    font-size: 22px;*/
-/*    line-height: 29px;*/
-/*    color: #FFFFFF;*/
-/*    text-align: center;*/
-/*    vertical-align: middle;*/
-/*}*/
+.upload-text{
+    font-size: 22px;
+    line-height: 29px;
+    color: #000000;
+    opacity: 0.2;
+}
+.terms-text{
+    font-size: 22px;
+    line-height: 29px;
+    color: #FFFFFF;
+    text-align: center;
+    vertical-align: middle;
+}
 
-/*.expand{*/
-/*    width:100%;*/
-/*}*/
+.expand{
+    width:100%;
+}
 
 
 

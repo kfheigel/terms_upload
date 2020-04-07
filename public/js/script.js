@@ -1,4 +1,4 @@
-function showname () {
+function showName() {
     var fileName = document.getElementById('terms'),
         label = document.getElementById('input-label'),
         submit = document.getElementById('submit-button'),
@@ -15,6 +15,8 @@ function showname () {
         submit.classList.remove('btn-secondary', 'upload-text');
     }
 };
+
+document.getElementById('terms').addEventListener("change", showName, false);
 
 document.querySelector("#date").valueAsDate = new Date();
 
