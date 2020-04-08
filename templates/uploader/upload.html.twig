@@ -1,46 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Terms Uploader
+    {% trans %}title{% endtrans %}
 {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class=" d-flex flex-column justify-content-center align-items-center mt-5">
-            <h1>Reguladmin</h1>
+            <h1>{% trans %}service_name{% endtrans %}</h1>
 
             <form class="mt-4" method="POST" action="{{ path('upload_terms') }}" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="select-menu" class="label-text">SERWIS</label>
+                    <label for="select-menu" class="label-text">{% trans %}label.select_menu{% endtrans %}</label>
                     <select class="form-control" id="select-menu">
-                        <option>home</option>
-                        <option>az</option>
-                        <option>ionosbg</option>
-                        <option>ionosro</option>
-                        <option>ionoshu</option>
+                        <option>{% trans %}service.home{% endtrans %}</option>
+                        <option>{% trans %}service.az{% endtrans %}</option>
+                        <option>{% trans %}service.ionosbg{% endtrans %}</option>
+                        <option>{% trans %}service.ionosro{% endtrans %}</option>
+                        <option>{% trans %}service.ionoshu{% endtrans %}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="date" class="label-text">DATA</label>
+                    <label for="date" class="label-text">
+                        {% trans %}label.date{% endtrans %}
+                    </label>
                     <input id="date" type="date" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="file-name" class="label-text">NAZWA REGULAMINU</label>
+                    <label for="file-name" class="label-text">
+                        {% trans %}label.file_name{% endtrans %}
+                    </label>
                     <input id="file-name" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="file-link" class="label-text">PODGLĄD</label>
+                    <label for="file-link" class="label-text">
+                        {% trans %}label.file_link{% endtrans %}
+                    </label>
                     <input id="file-link" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label id="input-label" class="btn btn-primary input-upload" for="terms">
-                        <span class="">Dodaj regulamin PDF</span>
+                        <span class="upload-text">
+                            {% trans %}label.input_label{% endtrans %}
+                        </span>
                     </label>
 
                     <input type="file" class="form-control-file" name="terms" id="terms">
 
                     <button id="submit-button" type="submit" class="btn btn-secondary" disabled>
-                        UPLOAD
+                        {% trans %}button{% endtrans %}
                     </button>
                 </div>
             </form>
@@ -48,7 +56,9 @@
     </div>
     <footer class="fixed-bottom mb-2">
         <div class="container">
-            <span class="d-flex text-muted justify-content-right">Krzysztof Heigel 2020 &reg;</span>
+            <span class="d-flex text-muted justify-content-right">
+                {% trans %}footer{% endtrans %}
+            </span>
         </div>
     </footer>
 {% endblock %}

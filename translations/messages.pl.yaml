@@ -1,0 +1,16 @@
+title: Terms Uploader
+service_name: Reguladmin
+service:
+  home: home
+  az: az
+  ionosbg: ionos.bg
+  ionosro: ionos.ro
+  ionoshu: ionos.hu
+label:
+  select_menu: SERWIS
+  date: DATA
+  file_name: NAZWA REGULAMINU
+  file_link: PODGLĄD
+  input_label: Dodaj regulamin PDF
+button: UPLOAD
+footer: Krzysztof Heigel 2020 &reg;
