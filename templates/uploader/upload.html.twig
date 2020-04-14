@@ -5,5 +5,57 @@
 {% endblock %}
 
 {% block body %}
-    {{ form(create_form) }}
+
+    <div class="container">
+        <div class=" d-flex flex-column justify-content-center align-items-center mt-5">
+            <h1>{% trans %}service_name{% endtrans %}</h1>
+            <form class="mt-4" method="POST" action="{{ path('upload_terms') }}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="select-menu" class="label-text">{% trans %}label.select_menu{% endtrans %}</label>
+                    <div class="form-control" id="select-menu">
+                        {{ form_widget(create_form.service) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label-text">
+                        {% trans %}label.date{% endtrans %}
+                    </div>
+                    <div id="date" class="form-control">
+                        {{ form_widget(create_form.date) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="file-name" class="label-text">
+                        {% trans %}label.file_name{% endtrans %}
+                    </label>
+                    <div id="file-name" class="form-control">
+                        {{ form_widget(create_form.file_name) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="file-link" class="label-text">
+                        {% trans %}label.file_link{% endtrans %}
+                    </label>
+                    <div id="file-link" class="form-control">
+                        {{ form_widget(create_form.file_link) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control-file" name="terms" id="terms">
+                        {{ form_widget(create_form.terms) }}
+                    </div>
+                    <div class="btn btn-secondary" id="submit-button">
+                        {{ form_widget(create_form.button) }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="fixed-bottom mb-2">
+        <div class="container">
+            <span class="d-flex text-muted justify-content-right">
+                {% trans %}footer{% endtrans %}
+            </span>
+        </div>
+    </footer>
 {% endblock %}

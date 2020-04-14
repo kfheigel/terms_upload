@@ -28,7 +28,7 @@ class FormUploaderType extends AbstractType
             ->add('date', DateType::class)
             ->add('file_name', TextType::class)
             ->add('file_link', TextType::class)
-            ->add('input_label', FileType::class)
+            ->add('terms', FileType::class)
             ->add('button', SubmitType::class)
         ;
     }
