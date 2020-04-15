@@ -17,20 +17,26 @@ class FormUploaderType extends AbstractType
     {
         $builder
             ->add('service', ChoiceType::class, [
-                'choices'  => [
-                    'home' => 'home',
-                    'az' => 'az',
-                    'ionos.bg' => 'ionosbg',
-                    'ionos.ro' => 'ionosro',
-                    'ionos.hu' => 'ionoshu',
+                'choices'       => [
+                    'home'      => 'home',
+                    'az'        => 'az',
+                    'ionos.bg'  => 'ionosbg',
+                    'ionos.ro'  => 'ionosro',
+                    'ionos.hu'  => 'ionoshu',
+                    ],
+                'attr'          =>[
+                    'class'     => ''
                     ],
             ])
             ->add('date', DateType::class)
-            ->add('file_name', TextType::class)
-            ->add('file_link', TextType::class)
+            ->add('fileName', TextType::class)
+            ->add('fileLink', TextType::class)
             ->add('terms', FileType::class)
-            ->add('button', SubmitType::class)
-        ;
+            ->add('button', SubmitType::class, [
+                'attr'          =>[
+                    'class'     => 'btn btn-secondary',
+                ],
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
