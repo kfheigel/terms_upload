@@ -26,7 +26,11 @@ class FormUploaderType extends AbstractType
                 'mapped'        => false,
                 'required'      => false,
             ])
-            ->add('terms', FileType::class)
+            ->add('terms', FileType::class,[
+                'attr' => [
+                    'name' => 'name',
+                ]
+            ])
             ->add('button', SubmitType::class);
     }
 

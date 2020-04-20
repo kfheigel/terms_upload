@@ -24,11 +24,10 @@ class UploaderController extends AbstractController {
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $uploadedFile = $request->files->get('terms');
-            dd($uploadedFile);
+            $uploadedFile = $request->files->get('form_uploader');
 
-            $destination = $this->getParameter('terms_directory');
-            $uploadedFile->move($destination, 'filename');
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+            array_pop($uploadedFile)->move($destination);
 
         }
 
