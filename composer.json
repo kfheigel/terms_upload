@@ -24,7 +24,8 @@
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.15",
-        "symfony/profiler-pack": "^1.0"
+        "symfony/profiler-pack": "^1.0",
+        "vimeo/psalm": "^3.11"
     },
     "config": {
         "preferred-install": {
