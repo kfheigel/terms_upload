@@ -7,8 +7,8 @@
 {% block body %}
 
     <h1>{% trans %}serviceName{% endtrans %}</h1>
-    {{ form_start(createForm,{'attr':{'id':'uploaderForm' }}) }}
-        {{ form(CreateForm) }}
+    {{ form_start(createForm,{'attr':{'id':'uploaderForm', 'enctype':'multipart/form-data' }}) }}
+        {{ form(createForm) }}
     {{ form_end(createForm) }}
 
     <footer class="fixed-bottom mb-2">

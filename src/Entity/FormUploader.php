@@ -19,26 +19,6 @@ class FormUploader
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $service;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $fileName;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $fileLink;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $terms;
 
 
@@ -47,53 +27,6 @@ class FormUploader
         return $this->id;
     }
 
-    public function getService(): ?string
-    {
-        return $this->service;
-    }
-
-    public function setService(string $service): self
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getFileName(): ?string
-    {
-        return $this->fileName;
-    }
-
-    public function setFileName(string $fileName): self
-    {
-        $this->fileName = $fileName;
-
-        return $this;
-    }
-
-    public function getFileLink(): ?string
-    {
-        return $this->fileLink;
-    }
-
-    public function setFileLink(?string $fileLink): self
-    {
-        $this->fileLink = $fileLink;
-
-        return $this;
-    }
 
     public function getTerms(): ?string
     {
