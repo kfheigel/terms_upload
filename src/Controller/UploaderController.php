@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\FormUploaderType;
 use App\Entity\FormUploader;
+use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,9 +26,20 @@ class UploaderController extends AbstractController {
         if ($form->isSubmitted() && $form->isValid()) {
 
             $uploadedFile = $request->files->get('form_uploader');
+            $uploadedFile = array_pop($uploadedFile);
 
             $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-            array_pop($uploadedFile)->move($destination);
+
+            $originalFileName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $newFileName = Urlizer::urlize($originalFileName).'.'.$uploadedFile->guessExtension();
+
+            $newFileName = preg_replace('/(\D?\d+\D?\d+\D?\d+)/', '', $newFileName);
+
+            $uploadedFile->move(
+                $destination,
+                $newFileName
+            );
 
         }
 

@@ -6,6 +6,7 @@ use App\Entity\FormUploader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,6 +17,7 @@ class FormUploaderType extends AbstractType
     {
         $builder
             ->add('service', ChoiceType::class, [
+                'placeholder'   => 'Wybierz serwis',
                 'choices'       => [
                     'home'      => 'home',
                     'az'        => 'az',
@@ -24,13 +26,9 @@ class FormUploaderType extends AbstractType
                     'ionos.hu'  => 'ionoshu',
                     ],
                 'mapped'        => false,
-                'required'      => false,
             ])
-            ->add('terms', FileType::class,[
-                'attr' => [
-                    'name' => 'name',
-                ]
-            ])
+            ->add('date', DateType::class)
+            ->add('terms', FileType::class)
             ->add('button', SubmitType::class);
     }
 
