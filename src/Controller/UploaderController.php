@@ -41,6 +41,9 @@ class UploaderController extends AbstractController {
                 $newFileName
             );
 
+            $this->addFlash('success', 'Regulamin został wrzucony!');
+            return $this->redirectToRoute('upload_terms');
+
         }
 
         return $this->render('uploader/upload.html.twig', [
