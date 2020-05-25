@@ -33,7 +33,9 @@ platform:
 
 php-cs-fixer:
   stage: check
-  script: vendor/bin/php-cs-fixer fix --dry-run --diff
+  script:
+    - composer install --quiet
+    - vendor/bin/php-cs-fixer fix --dry-run --diff
 
 psalm:
   stage: analysis
