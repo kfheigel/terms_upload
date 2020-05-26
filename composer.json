@@ -9,6 +9,7 @@
         "easycorp/easy-log-handler": "^1.0.7",
         "league/flysystem-bundle": "^1.5",
         "royvoetman/flysystem-gitlab-storage": "^1.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "sensio/framework-extra-bundle": "^5.5",
         "sensiolabs/security-checker": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
