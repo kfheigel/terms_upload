@@ -20,6 +20,16 @@ class ConfigVendors
                 $choices[$service['serviceName']] = $service['catalog'];
             }
         }
+
         return $choices;
+    }
+
+    public function vendorUrl($catalog)
+    {
+        foreach ($this->containerBag as $service) {
+            if (in_array($catalog, $service)) {
+                return $service['baseUrl'];
+            }
+        }
     }
 }

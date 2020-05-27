@@ -15,10 +15,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UploaderController extends AbstractController
 {
-
-    /**
-     * @var ConfigVendors
-     */
     private ConfigVendors $configVendors;
 
     public function __construct(ConfigVendors $configVendors)
@@ -39,7 +35,7 @@ class UploaderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $serviceName = $request->request->get('form_uploader')['service'];
+            $catalog = $request->request->get('form_uploader')['service'];
 
             $uploadedFile = $request->files->get('form_uploader');
             $uploadedFile = array_pop($uploadedFile);
@@ -49,10 +45,12 @@ class UploaderController extends AbstractController
             $tmpPath = $uploadedFile->getPathname();
 
             $flysystemGitlab = new FlysystemGitlab();
-            if (!($flysystemGitlab->gitlabUpload($serviceName.'/'.$originalFileName, file_get_contents($tmpPath)))) {
+            if (!($flysystemGitlab->gitlabUpload($catalog.'/'.$originalFileName, file_get_contents($tmpPath)))) {
                 $this->addFlash('danger', $translator->trans('uploadTermsError'));
             } else {
+                $url = $this->configVendors->vendorUrl($catalog).'/'.$catalog.'/'.$originalFileName;
                 $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
+                $this->addFlash('info', $url.'<br><a href="'.$url.'" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
             }
 
             return $this->redirectToRoute('upload_terms');

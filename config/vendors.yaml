@@ -1,37 +1,37 @@
 parameters:
   vendors:
     home:
-      serviceName: 'Home'
-      baseUrl:
+      serviceName: 'home'
+      baseUrl: 'https://regulations.home'
       catalog: 'home'
       userRole: 'none'
     az:
-      serviceName: 'AZ'
-      baseUrl:
+      serviceName: 'az'
+      baseUrl: 'https://regulations.az'
       catalog: 'az'
       userRole: 'none'
     ionosbg:
-      serviceName: 'Ionosbg'
-      baseUrl:
+      serviceName: 'ionosbg'
+      baseUrl: 'https://regulations.ionos.bg'
       catalog: 'bulgaria'
       userRole: 'none'
     ionosro:
-      serviceName: 'Ionosro'
-      baseUrl:
+      serviceName: 'ionosro'
+      baseUrl: 'https://regulations.ionos.ro'
       catalog: 'rumunia'
       userRole: 'none'
     ionoshu:
-      serviceName: 'Ionoshu'
-      baseUrl:
+      serviceName: 'ionoshu'
+      baseUrl: 'https://regulations.ionos.cz'
       catalog: 'wegry'
       userRole: 'none'
     ionoscz:
-      serviceName: 'Ionoscz'
-      baseUrl:
+      serviceName: 'ionoscz'
+      baseUrl: 'https://regulations.ionos.cz'
       catalog: 'czechy'
       userRole: 'none'
     ionossk:
-      serviceName: 'Ionossk'
-      baseUrl:
+      serviceName: 'ionossk'
+      baseUrl: 'https://regulations.ionos.sk'
       catalog: 'slowacja'
       userRole: 'none'
