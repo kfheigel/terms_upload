@@ -21,6 +21,7 @@ class FormUploaderType extends AbstractType
     {
         $this->configVendors = $configVendors;
     }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

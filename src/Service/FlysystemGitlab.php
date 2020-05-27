@@ -7,11 +7,10 @@ use League\Flysystem\Filesystem;
 use RoyVoetman\FlysystemGitlab\Client;
 use RoyVoetman\FlysystemGitlab\GitlabAdapter;
 
-
 class FlysystemGitlab
 {
-
-    public function gitlabUpload($path, $content){
+    public function gitlabUpload($path, $content)
+    {
         $personalAccessToken = '5QS_ccsn3tFh7X9q1xz6';
         $projectId = '72';
         $branch = 'master';
@@ -25,11 +24,10 @@ class FlysystemGitlab
 
         try {
             $filesystem->write($path, $content);
+
             return true;
         } catch (FileExistsException $e) {
             return false;
         }
-
     }
-
 }

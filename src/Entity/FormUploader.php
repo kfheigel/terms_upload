@@ -4,7 +4,6 @@ namespace App\Entity;
 
 class FormUploader
 {
-
     private $terms;
 
     private $service;
@@ -30,5 +29,4 @@ class FormUploader
 
         return $this;
     }
-
 }
