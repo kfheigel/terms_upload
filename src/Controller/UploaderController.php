@@ -2,30 +2,44 @@
 
 namespace App\Controller;
 
-use App\Form\FormUploaderType;
 use App\Entity\FormUploader;
+use App\Form\FormUploaderType;
+use App\Service\ConfigVendors;
 use App\Service\FlysystemGitlab;
 use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UploaderController extends AbstractController {
+class UploaderController extends AbstractController
+{
+
+    /**
+     * @var ConfigVendors
+     */
+    private ConfigVendors $configVendors;
+
+    public function __construct(ConfigVendors $configVendors)
+    {
+        $this->configVendors = $configVendors;
+    }
 
     /**
      * @Route("/", name="upload_terms")
-     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function site(Request $request){
+    public function site(Request $request, TranslatorInterface $translator)
+    {
         /** @var UploadedFile $uploadedFile */
-
         $formUploader = new FormUploader();
         $form = $this->createForm(FormUploaderType::class, $formUploader);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $serviceName = $request->request->get('form_uploader')['service'];
 
             $uploadedFile = $request->files->get('form_uploader');
             $uploadedFile = array_pop($uploadedFile);
@@ -34,16 +48,18 @@ class UploaderController extends AbstractController {
             $originalFileName = Urlizer::urlize($originalFileName).'.'.$uploadedFile->guessExtension();
             $tmpPath = $uploadedFile->getPathname();
 
-            $flysystemGitlab = new FlysystemGitlab;
-            $flysystemGitlab->gitlabUpload('home/' . $originalFileName, file_get_contents($tmpPath));
+            $flysystemGitlab = new FlysystemGitlab();
+            if (!($flysystemGitlab->gitlabUpload($serviceName.'/'.$originalFileName, file_get_contents($tmpPath)))) {
+                $this->addFlash('danger', $translator->trans('uploadTermsError'));
+            } else {
+                $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
+            }
 
-            $this->addFlash('success', 'Regulamin został wrzucony!');
             return $this->redirectToRoute('upload_terms');
-
         }
 
         return $this->render('uploader/upload.html.twig', [
-            'createForm' => $form->createView()
+            'createForm' => $form->createView(),
         ]);
     }
 }

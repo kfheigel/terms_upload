@@ -1,0 +1,37 @@
+parameters:
+  vendors:
+    home:
+      serviceName: 'Home'
+      baseUrl:
+      catalog: 'home'
+      userRole: 'none'
+    az:
+      serviceName: 'AZ'
+      baseUrl:
+      catalog: 'az'
+      userRole: 'none'
+    ionosbg:
+      serviceName: 'Ionosbg'
+      baseUrl:
+      catalog: 'bulgaria'
+      userRole: 'none'
+    ionosro:
+      serviceName: 'Ionosro'
+      baseUrl:
+      catalog: 'rumunia'
+      userRole: 'none'
+    ionoshu:
+      serviceName: 'Ionoshu'
+      baseUrl:
+      catalog: 'wegry'
+      userRole: 'none'
+    ionoscz:
+      serviceName: 'Ionoscz'
+      baseUrl:
+      catalog: 'czechy'
+      userRole: 'none'
+    ionossk:
+      serviceName: 'Ionossk'
+      baseUrl:
+      catalog: 'slowacja'
+      userRole: 'none'

@@ -8,3 +8,7 @@ label:
   inputLabel: Dodaj regulamin PDF
 button: UPLOAD
 footer: Krzysztof Heigel 2020 &reg;
+uploadTermsSuccess: Regulamin został wrzucony!
+uploadTermsError: Regulamin już istnieje na serwerze, zmień nazwę pliku by móc go dodać!
+chooseService: Wybierz serwis
+guidelines: Zmień nazwę pliku zgodnie z wytycznymi poniżej

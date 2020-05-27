@@ -2,53 +2,22 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\FormUploaderRepository")
- */
 class FormUploader
 {
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $terms;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $date;
+    private $service;
 
-    /**
-     * @return mixed
-     */
-    public function getDate()
+    public function getService(): ?string
     {
-        return $this->date;
+        return $this->service;
     }
 
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date): void
+    public function setService($service): self
     {
-        $this->date = $date;
+        $this->service = $service;
     }
-
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
 
     public function getTerms(): ?string
     {
