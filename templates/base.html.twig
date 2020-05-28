@@ -8,7 +8,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="container mt-3 p-5">
+        <div class="container p-5">
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}">
@@ -20,22 +20,6 @@
             {% block body %}{% endblock %}
 
             {% block javascripts %}{% endblock %}
-            <br><br>
-            <p>
-                <strong>ZASADY NAZYWANIA PLIKÓW:</strong>
-                <ul>
-                <li>Brak spacji - zamieniamy na znak myślnika “–”</li>
-                <li>Brak podkreśleń – zamieniamy “_” na “-”</li>
-                <li>Brak polskich liter</li>
-                <li>Brak wielkich liter</li>
-                <li>Na końcu przed rozszerzeniem data w formacie -YYYYMMDD</li>
-                </ul>
-                <strong>PRZYKŁAD:</strong><br>
-                Plik nazwany <br>
-                <strong>Regulamin_promocji_Świąteczna promocja na PrestaShop-10.05.2019.pdf</strong><br><br>
-                zmieniamy na:<br>
-                <strong>regulamin-promocji-swiateczna-promocja-na-prestashop-20190510.pdf</strong>
-            </p>
         </div>
         <script src="{{ asset('js/script.js') }}"></script>
     </body>

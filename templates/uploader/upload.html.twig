@@ -10,12 +10,29 @@
     {{ form_start(createForm,{'attr':{'id':'uploaderForm'}}) }}
         {{ form_widget(createForm) }}
     {{ form_end(createForm) }}
+    <br><br>
+    <p>
+        <strong>{% trans %}namingRules{% endtrans %}</strong>
+        <ul>
+            <li>{% trans %}rule1{% endtrans %}</li>
+            <li>{% trans %}rule2{% endtrans %}</li>
+            <li>{% trans %}rule3{% endtrans %}</li>
+            <li>{% trans %}rule4{% endtrans %}</li>
+            <li>{% trans %}rule5{% endtrans %}</li>
+        </ul>
+        <strong>{% trans %}example{% endtrans %}</strong><br>
+    {% trans %}example3{% endtrans %} <br>
+        <strong>{% trans %}example1{% endtrans %}</strong><br><br>
+    {% trans %}example4{% endtrans %}<br>
+        <strong>{% trans %}example2{% endtrans %}</strong>
+    </p>
 
     <footer class="fixed-bottom mb-2">
         <div class="container">
             <span class="d-flex text-muted justify-content-right">
                 {% trans %}footer{% endtrans %}
             </span>
+
         </div>
     </footer>
 {% endblock %}

@@ -11,12 +11,7 @@ class FlysystemGitlab
 {
     public function gitlabUpload($path, $content)
     {
-        $personalAccessToken = '5QS_ccsn3tFh7X9q1xz6';
-        $projectId = '72';
-        $branch = 'master';
-        $baseUrl = 'https://gitlab-frontend.home.net.pl';
-
-        $client = new Client($personalAccessToken, $projectId, $branch, $baseUrl);
+        $client = new Client($_ENV['GITLAB_ACCESS_TOKEN'], $_ENV['GITLAB_PROJECT_ID'], $_ENV['GITLAB_BRANCH'], $_ENV['GITLAB_BASEURL']);
 
         $adapter = new GitlabAdapter($client);
 

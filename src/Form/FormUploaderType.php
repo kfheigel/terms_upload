@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FormUploader;
 use App\Service\ConfigVendors;
+use App\Validator\Constraints\CorrectFilename;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -32,13 +33,7 @@ class FormUploaderType extends AbstractType
             ])
             ->add('terms', FileType::class, [
                 'constraints' => [
-                    new Callback(function (UploadedFile $object, ExecutionContextInterface $context, $payload) {
-                        $pattern = '/^([a-z]+-)+20\d{6}\.pdf/';
-                        if (!preg_match($pattern, $object->getClientOriginalName())) {
-                            $context->buildViolation('Zmień nazwę pliku zgodnie z wytycznymi poniżej:')
-                                ->addViolation();
-                        }
-                    }),
+                    new CorrectFilename(),
                     new File([
                         'mimeTypes' => [
                             'application/pdf',
