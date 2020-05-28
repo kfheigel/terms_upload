@@ -2,8 +2,8 @@
 
 namespace HomePL\TermUploader\Form;
 
-use HomePL\TermUploader\Entity\FormUploader;
 use HomePL\TermUploader\ConfigVendors;
+use HomePL\TermUploader\Entity\FormUploader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;

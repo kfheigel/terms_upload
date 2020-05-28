@@ -2,7 +2,6 @@
 
 namespace HomePL\TermUploader;
 
-
 class ConfigVendors
 {
     public function __construct(array $vendors)
