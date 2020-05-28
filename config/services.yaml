@@ -9,19 +9,19 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\:
+    HomePL\TermUploader\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-    App\Controller\:
+    HomePL\TermUploader\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\Validator\Constraints\CorrectFilenameValidator:
-        tags:
-            - { name: validator.constraint_validator }
+#    App\Validator\Constraints\CorrectFilenameValidator:
+#        tags:
+#            - { name: validator.constraint_validator }
 
-    App\Service\ConfigVendors:
+    HomePL\TermUploader\ConfigVendors:
         arguments:
             $vendors: '%vendors%'
 

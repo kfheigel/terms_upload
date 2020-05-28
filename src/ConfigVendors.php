@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Service;
+namespace HomePL\TermUploader;
 
-use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class ConfigVendors
 {
-    public function __construct(ContainerBagInterface $containerBag)
+    public function __construct(array $vendors)
     {
-        $this->containerBag = $containerBag->get('vendors');
+        $this->vendors = $vendors;
     }
 
     public function loadChoiceList()
     {
         $choices = [];
 
-        foreach ($this->containerBag as $service) {
+        foreach ($this->vendors as $service) {
             foreach ($service as $key => $value) {
                 $choices[$service['serviceName']] = $service['catalog'];
             }
@@ -26,7 +25,7 @@ class ConfigVendors
 
     public function vendorUrl($catalog)
     {
-        foreach ($this->containerBag as $service) {
+        foreach ($this->vendors as $service) {
             if (in_array($catalog, $service)) {
                 return $service['baseUrl'];
             }

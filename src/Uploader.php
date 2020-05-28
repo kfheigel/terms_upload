@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Service;
+namespace HomePL\TermUploader;
 
 use League\Flysystem\FileExistsException;
 use League\Flysystem\Filesystem;
 use RoyVoetman\FlysystemGitlab\Client;
 use RoyVoetman\FlysystemGitlab\GitlabAdapter;
 
-class FlysystemGitlab
+class Uploader
 {
     public function gitlabUpload($path, $content)
     {

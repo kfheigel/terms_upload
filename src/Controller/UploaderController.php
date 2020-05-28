@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace HomePL\TermUploader\Controller;
 
-use App\Entity\FormUploader;
-use App\Form\FormUploaderType;
-use App\Service\ConfigVendors;
-use App\Service\FlysystemGitlab;
-use Gedmo\Sluggable\Util\Urlizer;
+use HomePL\TermUploader\ConfigVendors;
+use HomePL\TermUploader\Entity\FormUploader;
+use HomePL\TermUploader\FileNameGenerator;
+use HomePL\TermUploader\Form\FormUploaderType;
+use HomePL\TermUploader\Uploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,14 +37,11 @@ class UploaderController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $catalog = $request->request->get('form_uploader')['service'];
 
-            $uploadedFile = $request->files->get('form_uploader');
-            $uploadedFile = array_pop($uploadedFile);
+            $fileNameGenerator = new FileNameGenerator($request);
+            $originalFileName = $fileNameGenerator->getOriginalFilename();
+            $tmpPath = $fileNameGenerator->getFilePath();
 
-            $originalFileName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $originalFileName = Urlizer::urlize($originalFileName).'.'.$uploadedFile->guessExtension();
-            $tmpPath = $uploadedFile->getPathname();
-
-            $flysystemGitlab = new FlysystemGitlab();
+            $flysystemGitlab = new Uploader();
             if (!($flysystemGitlab->gitlabUpload($catalog.'/'.$originalFileName, file_get_contents($tmpPath)))) {
                 $this->addFlash('danger', $translator->trans('uploadTermsError'));
             } else {

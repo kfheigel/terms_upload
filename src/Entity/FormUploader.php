@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace HomePL\TermUploader\Entity;
 
 class FormUploader
 {
