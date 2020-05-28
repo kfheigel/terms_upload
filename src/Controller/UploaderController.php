@@ -41,8 +41,9 @@ class UploaderController extends AbstractController
             $originalFileName = $fileNameGenerator->getOriginalFilename();
             $tmpPath = $fileNameGenerator->getFilePath();
 
-            $flysystemGitlab = new Uploader();
-            if (!($flysystemGitlab->gitlabUpload($catalog.'/'.$originalFileName, file_get_contents($tmpPath)))) {
+            $upload = new Uploader($catalog.'/'.$originalFileName, file_get_contents($tmpPath));
+
+            if (!$upload->gitlabUpload()) {
                 $this->addFlash('danger', $translator->trans('uploadTermsError'));
             } else {
                 $url = $this->configVendors->vendorUrl($catalog).'/'.$catalog.'/'.$originalFileName;

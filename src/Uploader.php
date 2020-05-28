@@ -9,7 +9,13 @@ use RoyVoetman\FlysystemGitlab\GitlabAdapter;
 
 class Uploader
 {
-    public function gitlabUpload($path, $content)
+    public function __construct($path, $content)
+    {
+        $this->path = $path;
+        $this->content = $content;
+    }
+
+    public function gitlabUpload()
     {
         $client = new Client($_ENV['GITLAB_ACCESS_TOKEN'], $_ENV['GITLAB_PROJECT_ID'], $_ENV['GITLAB_BRANCH'], $_ENV['GITLAB_BASEURL']);
 
@@ -18,8 +24,7 @@ class Uploader
         $filesystem = new Filesystem($adapter);
 
         try {
-            $filesystem->write($path, $content);
-
+            $filesystem->write($this->path, $this->content);
             return true;
         } catch (FileExistsException $e) {
             return false;
