@@ -27,7 +27,7 @@ class UploaderController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function site(Request $request, TranslatorInterface $translator)
+    public function formRender(Request $request, TranslatorInterface $translator)
     {
         /** @var UploadedFile $uploadedFile */
         $formUploader = new FormUploader();

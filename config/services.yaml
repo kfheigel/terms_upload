@@ -21,4 +21,7 @@ services:
         tags:
             - { name: validator.constraint_validator }
 
-    App\Service\ConfigVendors: ~
+    App\Service\ConfigVendors:
+        arguments:
+            $vendors: '%vendors%'
+
