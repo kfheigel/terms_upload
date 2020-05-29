@@ -25,6 +25,7 @@ class Uploader
 
         try {
             $filesystem->write($this->path, $this->content);
+
             return true;
         } catch (FileExistsException $e) {
             return false;

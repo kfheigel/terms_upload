@@ -7,6 +7,10 @@ class ConfigVendors
     public function __construct(array $vendors)
     {
         $this->vendors = $vendors;
+
+        foreach ($this->vendors as $vendorName => $vendorConfig) {
+            $this->vendors[$vendorName] = new Vendor($vendorConfig);
+        }
     }
 
     public function loadChoiceList()
@@ -15,7 +19,7 @@ class ConfigVendors
 
         foreach ($this->vendors as $service) {
             foreach ($service as $key => $value) {
-                $choices[$service['serviceName']] = $service['catalog'];
+                $choices[$service->getServiceName()] = $service->getCatalog();
             }
         }
 
@@ -25,8 +29,8 @@ class ConfigVendors
     public function vendorUrl($catalog)
     {
         foreach ($this->vendors as $service) {
-            if (in_array($catalog, $service)) {
-                return $service['baseUrl'];
+            if (in_array($catalog, $service->getAll())) {
+                return $service->getBaseUrl();
             }
         }
     }
