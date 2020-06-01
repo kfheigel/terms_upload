@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HomePL\TermUploader;
 
 use League\Flysystem\FileExistsException;
 use League\Flysystem\Filesystem;
 use RoyVoetman\FlysystemGitlab\Client;
 use RoyVoetman\FlysystemGitlab\GitlabAdapter;
+use UploaderInterface;
 
-class Uploader
+class Uploader implements UploaderInterface
 {
     public function __construct(string $path, string $content)
     {
@@ -15,7 +18,7 @@ class Uploader
         $this->content = $content;
     }
 
-    public function gitlabUpload()
+    public function upload(): bool
     {
         $client = new Client($_ENV['GITLAB_ACCESS_TOKEN'], $_ENV['GITLAB_PROJECT_ID'], $_ENV['GITLAB_BRANCH'], $_ENV['GITLAB_BASEURL']);
 

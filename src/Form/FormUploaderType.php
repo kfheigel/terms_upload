@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HomePL\TermUploader\Form;
 
 use HomePL\TermUploader\ConfigVendors;

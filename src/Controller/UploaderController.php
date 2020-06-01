@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HomePL\TermUploader\Controller;
 
 use HomePL\TermUploader\ConfigVendors;
@@ -24,8 +26,6 @@ class UploaderController extends AbstractController
     /**
      * @Route("/", name="upload_terms")
      *
-     * @param Request $request
-     * @param TranslatorInterface $translator
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function formRender(Request $request, TranslatorInterface $translator)
@@ -51,12 +51,12 @@ class UploaderController extends AbstractController
         $catalog = $request->request->get('form_uploader')['service'];
         $fileNameGenerator = new FileNameGenerator($request, $catalog);
 
-        if (!$fileNameGenerator->something()->gitlabUpload()) {
+        if (!$fileNameGenerator->something()->upload()) {
             $this->addFlash('danger', $translator->trans('uploadTermsError'));
         } else {
             $url = $fileNameGenerator->getUrl($this->configVendors->vendorUrl($catalog));
             $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
-            $this->addFlash('info', $url.'<br><a href="'.$url.'" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
+            $this->addFlash('info', $url . '<br><a href="' . $url . '" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
         }
     }
 }

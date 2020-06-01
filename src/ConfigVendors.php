@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HomePL\TermUploader;
 
 class ConfigVendors
@@ -29,7 +31,7 @@ class ConfigVendors
     public function vendorUrl(string $catalog)
     {
         foreach ($this->vendors as $service) {
-            if (in_array($catalog, $service->getAll())) {
+            if (in_array($catalog, $service->getAll(), true)) {
                 return $service->getBaseUrl();
             }
         }

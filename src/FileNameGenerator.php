@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace HomePL\TermUploader;
 
 use Gedmo\Sluggable\Util\Urlizer;
@@ -24,7 +26,7 @@ class FileNameGenerator
     {
         $uploadedFile = $this->getUploadedFile();
         $originalFileName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $originalFileName = Urlizer::urlize($originalFileName).'.'.$uploadedFile->guessExtension();
+        $originalFileName = Urlizer::urlize($originalFileName) . '.' . $uploadedFile->guessExtension();
 
         return $originalFileName;
     }
@@ -36,7 +38,7 @@ class FileNameGenerator
 
     public function getUrl(string $vendorUrl)
     {
-        return $vendorUrl.'/'.$this->catalog.'/'.$this->getOriginalFilename();
+        return $vendorUrl . '/' . $this->catalog . '/' . $this->getOriginalFilename();
     }
 
     public function something()
@@ -44,6 +46,6 @@ class FileNameGenerator
         $originalFileName = $this->getOriginalFilename();
         $tmpPath = $this->getFilePath();
 
-        return new Uploader($this->catalog.'/'.$originalFileName, file_get_contents($tmpPath));
+        return new Uploader($this->catalog . '/' . $originalFileName, file_get_contents($tmpPath));
     }
 }
