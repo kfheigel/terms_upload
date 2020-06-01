@@ -8,6 +8,18 @@ class FormUploader
 
     private $service;
 
+    private $vendor;
+
+    public function getVendor()
+    {
+        return $this->vendor;
+    }
+
+    public function setVendor($vendor): void
+    {
+        $this->vendor = $vendor;
+    }
+
     public function getService(): ?string
     {
         return $this->service;

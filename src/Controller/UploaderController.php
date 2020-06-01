@@ -43,13 +43,7 @@ class UploaderController extends AbstractController
 
             $upload = new Uploader($catalog.'/'.$originalFileName, file_get_contents($tmpPath));
 
-            if (!$upload->gitlabUpload()) {
-                $this->addFlash('danger', $translator->trans('uploadTermsError'));
-            } else {
-                $url = $this->configVendors->vendorUrl($catalog).'/'.$catalog.'/'.$originalFileName;
-                $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
-                $this->addFlash('info', $url.'<br><a href="'.$url.'" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
-            }
+            $this->gitlabupload($upload, $translator, $catalog, $originalFileName);
 
             return $this->redirectToRoute('upload_terms');
         }
@@ -58,4 +52,16 @@ class UploaderController extends AbstractController
             'createForm' => $form->createView(),
         ]);
     }
+
+    public function gitlabupload($upload, $translator, $catalog, $originalFileName)
+    {
+        if (!$upload->gitlabUpload()) {
+            $this->addFlash('danger', $translator->trans('uploadTermsError'));
+        } else {
+            $url = $this->configVendors->vendorUrl($catalog).'/'.$catalog.'/'.$originalFileName;
+            $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
+            $this->addFlash('info', $url.'<br><a href="'.$url.'" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
+        }
+    }
+
 }
