@@ -1,14 +1,40 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__)
-    ->exclude('var')
-;
+// Próbujemy wyłączyć XDEBUG. Komunikat zostanie, ale będzie działać bez (szybciej).
+if (function_exists('xdebug_disable')) {
+    xdebug_disable();
+}
 
 return PhpCsFixer\Config::create()
+    ->setUsingCache(true)
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
-        'array_syntax' => ['syntax' => 'short'],
+        'self_accessor' => false,
+        'concat_space' => [
+            'spacing' => 'one',
+        ],
+        'linebreak_after_opening_tag' => true,
+        'ordered_imports' => true,
+        'php_unit_construct' => true,
+        'phpdoc_order' => true,
+        'array_syntax' => [
+            'syntax' => 'short',
+        ],
+        'no_short_echo_tag' => true,
+        'strict_comparison' => true,
+        'strict_param' => true,
+        'declare_strict_types' => true,
+        'phpdoc_to_comment' => false,
     ])
-    ->setFinder($finder)
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->exclude('config')
+            ->exclude('public')
+            ->exclude('var')
+            ->exclude('bin')
+            ->exclude('__snapshots__')
+            ->exclude('vendor')
+            ->in('src')
+    )
 ;
