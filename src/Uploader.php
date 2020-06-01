@@ -9,7 +9,7 @@ use RoyVoetman\FlysystemGitlab\GitlabAdapter;
 
 class Uploader
 {
-    public function __construct($path, $content)
+    public function __construct(string $path, string $content)
     {
         $this->path = $path;
         $this->content = $content;

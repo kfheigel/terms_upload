@@ -26,7 +26,7 @@ class ConfigVendors
         return $choices;
     }
 
-    public function vendorUrl($catalog)
+    public function vendorUrl(string $catalog)
     {
         foreach ($this->vendors as $service) {
             if (in_array($catalog, $service->getAll())) {

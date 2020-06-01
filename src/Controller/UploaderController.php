@@ -24,6 +24,8 @@ class UploaderController extends AbstractController
     /**
      * @Route("/", name="upload_terms")
      *
+     * @param Request $request
+     * @param TranslatorInterface $translator
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function formRender(Request $request, TranslatorInterface $translator)
@@ -44,7 +46,7 @@ class UploaderController extends AbstractController
         ]);
     }
 
-    public function termUpload($request, $translator)
+    public function termUpload(object $request, object $translator)
     {
         $catalog = $request->request->get('form_uploader')['service'];
         $fileNameGenerator = new FileNameGenerator($request, $catalog);

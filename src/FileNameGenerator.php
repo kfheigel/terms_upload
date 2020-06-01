@@ -6,7 +6,7 @@ use Gedmo\Sluggable\Util\Urlizer;
 
 class FileNameGenerator
 {
-    public function __construct($request, $catalog)
+    public function __construct(object $request, string $catalog)
     {
         $this->request = $request;
         $this->catalog = $catalog;
@@ -34,7 +34,7 @@ class FileNameGenerator
         return $this->getUploadedFile()->getPathname();
     }
 
-    public function getUrl($vendorUrl)
+    public function getUrl(string $vendorUrl)
     {
         return $vendorUrl.'/'.$this->catalog.'/'.$this->getOriginalFilename();
     }
