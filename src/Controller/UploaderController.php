@@ -6,7 +6,6 @@ use HomePL\TermUploader\ConfigVendors;
 use HomePL\TermUploader\Entity\FormUploader;
 use HomePL\TermUploader\FileNameGenerator;
 use HomePL\TermUploader\Form\FormUploaderType;
-use HomePL\TermUploader\Uploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,15 +34,7 @@ class UploaderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $catalog = $request->request->get('form_uploader')['service'];
-
-            $fileNameGenerator = new FileNameGenerator($request);
-            $originalFileName = $fileNameGenerator->getOriginalFilename();
-            $tmpPath = $fileNameGenerator->getFilePath();
-
-            $upload = new Uploader($catalog.'/'.$originalFileName, file_get_contents($tmpPath));
-
-            $this->gitlabupload($upload, $translator, $catalog, $originalFileName);
+            $this->termUpload($request, $translator);
 
             return $this->redirectToRoute('upload_terms');
         }
@@ -53,15 +44,17 @@ class UploaderController extends AbstractController
         ]);
     }
 
-    public function gitlabupload($upload, $translator, $catalog, $originalFileName)
+    public function termUpload($request, $translator)
     {
-        if (!$upload->gitlabUpload()) {
+        $catalog = $request->request->get('form_uploader')['service'];
+        $fileNameGenerator = new FileNameGenerator($request, $catalog);
+
+        if (!$fileNameGenerator->something()->gitlabUpload()) {
             $this->addFlash('danger', $translator->trans('uploadTermsError'));
         } else {
-            $url = $this->configVendors->vendorUrl($catalog).'/'.$catalog.'/'.$originalFileName;
+            $url = $fileNameGenerator->getUrl($this->configVendors->vendorUrl($catalog));
             $this->addFlash('success', $translator->trans('uploadTermsSuccess'));
             $this->addFlash('info', $url.'<br><a href="'.$url.'" target="_blank">Podgląd</a> <br><br> Plik będzie dostępny po kilku minutach, proszę o cierpliwość!');
         }
     }
-
 }
