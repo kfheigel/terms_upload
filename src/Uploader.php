@@ -12,6 +12,9 @@ use UploaderInterface;
 
 class Uploader implements UploaderInterface
 {
+    private string $path;
+    private string $content;
+
     public function __construct(string $path, string $content)
     {
         $this->path = $path;

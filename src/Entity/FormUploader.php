@@ -6,11 +6,11 @@ namespace HomePL\TermUploader\Entity;
 
 class FormUploader
 {
-    private $terms;
+    private string $terms;
 
-    private $service;
+    private string $service;
 
-    private $vendor;
+    private string $vendor;
 
     public function getVendor()
     {
@@ -30,6 +30,8 @@ class FormUploader
     public function setService($service): self
     {
         $this->service = $service;
+
+        return $this;
     }
 
     public function getTerms(): ?string

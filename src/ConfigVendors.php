@@ -6,6 +6,8 @@ namespace HomePL\TermUploader;
 
 class ConfigVendors
 {
+    private array $vendors;
+
     public function __construct(array $vendors)
     {
         $this->vendors = $vendors;

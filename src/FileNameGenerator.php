@@ -8,6 +8,9 @@ use Gedmo\Sluggable\Util\Urlizer;
 
 class FileNameGenerator
 {
+    private object $request;
+    private string $catalog;
+
     public function __construct(object $request, string $catalog)
     {
         $this->request = $request;
