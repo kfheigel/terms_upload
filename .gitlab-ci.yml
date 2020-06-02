@@ -1,0 +1,44 @@
+stages:
+  - check
+  - analysis
+
+variables:
+  APP_ENV: "test"
+  COMPOSER_NO_INTERACTION: "1"
+
+default:
+  image: gitlab-frontend.home.net.pl:5005/onestore/domain-api/domain-api:latest
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+    - echo "$BITBUCKET_SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+  cache:
+    paths:
+      - vendor/
+      - bin/
+
+requirements:
+  stage: check
+  script:
+    - composer install --quiet
+    - symfony check:requirements
+
+security:
+  stage: check
+  script: symfony security:check
+
+platform:
+  stage: check
+  script: composer check-platform-reqs
+
+php-cs-fixer:
+  stage: check
+  script:
+    - composer install --quiet
+    - vendor/bin/php-cs-fixer fix --dry-run --diff
+
+psalm:
+  stage: analysis
+  script:
+    - composer install --quiet
+    - vendor/bin/psalm --root=`pwd` | grep "No errors found!"

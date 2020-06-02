@@ -1,0 +1,17 @@
+serviceName: Reguladmin
+namingRules : "ZASADY NAZYWANIA PLIKÓW:"
+rule1: Brak spacji - zamieniamy na znak myślnika “–”
+rule2: Brak podkreśleń – zamieniamy “_” na “-”
+rule3: Brak polskich liter
+rule4: Brak wielkich liter
+rule5: Na końcu przed rozszerzeniem data w formacie - YYYYMMDD
+example: "PRZYKŁAD:"
+example1: Regulamin_promocji_Świąteczna promocja na PrestaShop-10.05.2019.pdf
+example2: regulamin-promocji-swiateczna-promocja-na-prestashop-20190510.pdf
+example3: Plik nazwany
+example4: "zmieniamy na:"
+footer: Krzysztof Heigel 2020 &reg;
+uploadTermsSuccess: Regulamin został wrzucony!
+uploadTermsError: Regulamin już istnieje na serwerze, zmień nazwę pliku by móc go dodać!
+chooseService: Wybierz serwis
+guidelines: Zmień nazwę pliku zgodnie z wytycznymi poniżej

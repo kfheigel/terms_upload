@@ -1,0 +1,27 @@
+parameters:
+  vendors:
+    ionos-bg:
+      serviceName: 'ionos-bg'
+      baseUrl: 'https://terms.ionos.bg'
+      catalog: 'bulgaria'
+      userRole: 'none'
+    ionos-ro:
+      serviceName: 'ionos-ro'
+      baseUrl: 'https://termeni.ionos.ro'
+      catalog: 'romania'
+      userRole: 'none'
+    ionos-hu:
+      serviceName: 'ionos-hu'
+      baseUrl: 'https://dokumentumok.ionos.hu'
+      catalog: 'hungary'
+      userRole: 'none'
+    ionos-cz:
+      serviceName: 'ionos-cz'
+      baseUrl: 'https://regulations.ionos.cz'
+      catalog: 'czechia'
+      userRole: 'none'
+    ionos-sk:
+      serviceName: 'ionos-sk'
+      baseUrl: 'https://regulations.ionos.sk'
+      catalog: 'slovakia'
+      userRole: 'none'
