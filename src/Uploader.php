@@ -8,7 +8,6 @@ use League\Flysystem\FileExistsException;
 use League\Flysystem\Filesystem;
 use RoyVoetman\FlysystemGitlab\Client;
 use RoyVoetman\FlysystemGitlab\GitlabAdapter;
-use UploaderInterface;
 
 class Uploader implements UploaderInterface
 {

@@ -6,7 +6,7 @@ namespace HomePL\TermUploader;
 
 class ConfigVendors
 {
-    private array $vendors;
+    public array $vendors;
 
     public function __construct(array $vendors)
     {
@@ -20,9 +20,8 @@ class ConfigVendors
     public function loadChoiceList()
     {
         $choices = [];
-
         foreach ($this->vendors as $service) {
-            foreach ($service as $key => $value) {
+            foreach ($service as $key) {
                 $choices[$service->getServiceName()] = $service->getCatalog();
             }
         }

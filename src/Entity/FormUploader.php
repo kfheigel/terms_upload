@@ -6,7 +6,7 @@ namespace HomePL\TermUploader\Entity;
 
 class FormUploader
 {
-    private string $terms;
+    private ?string $terms = null;
 
     private string $service;
 

@@ -6,34 +6,34 @@ namespace HomePL\TermUploader;
 
 class Vendor
 {
-    private array $config;
+    public array $config;
 
     public function __construct(array $configVendor)
     {
         $this->config = $configVendor;
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->config;
     }
 
-    public function getServiceName()
+    public function getServiceName(): string
     {
         return $this->config['serviceName'];
     }
 
-    public function getBaseUrl()
+    public function getBaseUrl(): string
     {
         return $this->config['baseUrl'];
     }
 
-    public function getCatalog()
+    public function getCatalog(): string
     {
         return $this->config['catalog'];
     }
 
-    public function getUserRole()
+    public function getUserRole(): string
     {
         return $this->config['userRole'];
     }
